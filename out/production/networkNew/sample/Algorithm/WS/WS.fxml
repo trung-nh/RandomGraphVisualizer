@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="761.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Algorithm.WS.Controller">
+   <children>
+      <Button fx:id="GoBack" layoutX="960.0" layoutY="694.0" mnemonicParsing="false" onAction="#Return" prefHeight="51.0" prefWidth="148.0" text="Go Back" />
+      <AnchorPane fx:id="pane" layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Circle fx:id="circle" fill="#3d4956" layoutX="358.0" layoutY="316.0" radius="311.0" stroke="#3d4956" strokeType="INSIDE" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="197.0" layoutY="21.0" prefHeight="51.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Label layoutX="8.0" layoutY="5.0" prefHeight="42.0" prefWidth="721.0" text="Watts - Strogatz Model" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="enterButton" layoutX="14.0" layoutY="473.0" mnemonicParsing="false" onAction="#getData" prefHeight="51.0" prefWidth="148.0" text="Enter" />
+      <Label layoutX="24.0" layoutY="138.0" prefHeight="31.0" prefWidth="148.0" text="Number of Vertices">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="4.0" layoutY="240.0" prefHeight="26.0" prefWidth="207.0" text="Number of Mean Degree">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <TextField fx:id="verticesID" layoutX="21.0" layoutY="169.0" prefHeight="31.0" prefWidth="148.0" promptText="Input number" />
+      <TextField fx:id="kID" layoutX="21.0" layoutY="266.0" prefHeight="31.0" prefWidth="148.0" promptText="Input number" />
+      <Label layoutX="14.0" layoutY="355.0" text="Rewiring Probability">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <TextField fx:id="probID" layoutX="21.0" layoutY="381.0" prefHeight="31.0" prefWidth="148.0" promptText="Input number" />
+      <Button fx:id="setUpButton" layoutX="14.0" layoutY="539.0" mnemonicParsing="false" onAction="#setUp" prefHeight="51.0" prefWidth="148.0" text="Set Up" />
+       <Button fx:id="generateButton" layoutX="14.0" layoutY="605.0" mnemonicParsing="false" onAction="#generate" prefHeight="51.0" prefWidth="148.0" text="Generate" />
+      <Button fx:id="resetButton" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#reset" prefHeight="51.0" prefWidth="148.0" text="Reset" />
+      <Label layoutX="12.0" layoutY="200.0" text="Conditions: an integer &gt; 3" />
+      <Label layoutX="9.0" layoutY="297.0" prefHeight="42.0" prefWidth="182.0" text="Conditions: an integer divisible by 2" wrapText="true" />
+      <Label layoutX="9.0" layoutY="412.0" prefHeight="42.0" prefWidth="182.0" text="Conditions: a number between 0 and 1" wrapText="true" />
+   </children>
+</AnchorPane>

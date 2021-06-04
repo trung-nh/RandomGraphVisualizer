@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="761.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Algorithm.RN.Controller">
+   <children>
+      <Button fx:id="GoBack" layoutX="960.0" layoutY="694.0" mnemonicParsing="false" onAction="#Return" prefHeight="51.0" prefWidth="148.0" text="Go Back" />
+      <AnchorPane layoutX="197.0" layoutY="28.0" prefHeight="46.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Label layoutX="8.0" layoutY="4.0" prefHeight="42.0" prefWidth="376.0" text="Random Network Model" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0" style="-fx-background-color: #3d4956;" />
+      <TextField fx:id="nodeID" layoutX="27.0" layoutY="165.0" prefHeight="31.0" prefWidth="139.0" promptText="Input Number" />
+      <TextField fx:id="edgeID" layoutX="27.0" layoutY="263.0" prefHeight="31.0" prefWidth="139.0" promptText="Input Number" />
+      <Label layoutX="34.0" layoutY="140.0" text="Number of Nodes">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="27.0" layoutY="238.0" text="Number of Edges">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Button fx:id="resetButton" layoutX="24.0" layoutY="615.0" mnemonicParsing="false" onAction="#reset" prefHeight="51.0" prefWidth="148.0" text="Reset" />
+      <Button fx:id="generateButton" layoutX="24.0" layoutY="549.0" mnemonicParsing="false" onAction="#generate" prefHeight="51.0" prefWidth="148.0" text="Generate" />
+      <Button fx:id="enterButton" layoutX="24.0" layoutY="483.0" mnemonicParsing="false" onAction="#getData" prefHeight="51.0" prefWidth="148.0" text="Enter" />
+      <Label layoutX="27.0" layoutY="203.0" text="Conditions: Integer &gt;= 0" />
+      <Label layoutX="17.0" layoutY="300.0" text="Conditions: Integer &gt;= 0" />
+   </children>
+</AnchorPane>

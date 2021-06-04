@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="scenePane" prefHeight="665.0" prefWidth="487.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane fx:id="backScene1" prefHeight="89.0" prefWidth="541.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <ImageView fx:id="exitButtonImage" fitHeight="21.0" fitWidth="26.0" layoutX="506.0" layoutY="13.0" onMousePressed="#exitMenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/settings.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="14.0" layoutY="23.0" prefHeight="43.0" prefWidth="444.0" text="Network Problem Visualization Program" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="backScene2" layoutY="99.0" prefHeight="666.0" prefWidth="541.0" style="-fx-background-color: #3d4956;">
+         <children>
+            <Label layoutX="15.0" layoutY="14.0" prefHeight="111.0" prefWidth="493.0" text="This is the network generation visualization (Presented by group 9). Please choose an option below so the application will visualize it for you!" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="RN" layoutX="66.0" layoutY="156.0" mnemonicParsing="false" onAction="#RNscene" prefHeight="78.0" prefWidth="410.0" text="Random Network Model" />
+            <Button fx:id="ER" layoutX="66.0" layoutY="267.0" mnemonicParsing="false" onAction="#ERscene" prefHeight="78.0" prefWidth="410.0" text="Erdos - Renyi Model" />
+            <Button fx:id="WS" layoutX="66.0" layoutY="378.0" mnemonicParsing="false" onAction="#WSscene" prefHeight="78.0" prefWidth="410.0" text="Watts - Strogatz Model" />
+            <Button fx:id="BA" layoutX="66.0" layoutY="489.0" mnemonicParsing="false" onAction="#BAscene" prefHeight="78.0" prefWidth="410.0" text="Barabasi - Albert Model" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
