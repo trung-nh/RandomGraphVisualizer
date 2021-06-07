@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 public class Vertex {
 	// Vertex configurations
 	final int RADIUS = 4;
-	final Paint COLOR = Color.RED;
+	final Paint COLOR = Color.rgb(255, 20, 67);
 
 	// Attributes
 	private float x;
@@ -38,12 +38,20 @@ public class Vertex {
 		this.degree = degree;
 	}
 
+	public int getDegree() {
+		return degree;
+	}
+
+	public void incrementDeg() {
+		degree++;
+	}
+
 	public Circle getNode() {
 		return this.node;
 	}
 
 	// Constructor
-	public Vertex( float x, float y){
+	public Vertex(float x, float y) {
 		node = new Circle(x, y, 4, COLOR);
 		setX(x);
 		setY(y);

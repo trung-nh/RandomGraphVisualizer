@@ -15,7 +15,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="197.0" layoutY="21.0" prefHeight="51.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
          <children>
-            <Label layoutX="8.0" layoutY="5.0" prefHeight="42.0" prefWidth="721.0" text="Watts - Strogatz Model" textFill="WHITE">
+            <Label layoutX="8.0" layoutY="5.0" prefHeight="42.0" prefWidth="721.0" text="Watts - Strogatz Model / Small-World Model" textFill="WHITE" alignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>

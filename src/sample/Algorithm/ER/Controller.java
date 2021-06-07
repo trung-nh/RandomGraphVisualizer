@@ -111,13 +111,16 @@ public class Controller {
 	@FXML
 	private AnchorPane pane;
 
+	@FXML
+	void setUp(ActionEvent actionEvent) {
+		myGraph.initGraph(vCount, pane);
+	}
 
 	@FXML
 	private Button generateButton;
 
 	@FXML
 	void generate(ActionEvent event) {
-		myGraph.initGraph(vCount, pane);
 		myGraph.execAlgorithm(pane, prob);
 	}
 
@@ -130,4 +133,6 @@ public class Controller {
 		myGraph.resetStrategy(pane);
 		JOptionPane.showMessageDialog(null, "Successfully removed!");
 	}
+
+
 }

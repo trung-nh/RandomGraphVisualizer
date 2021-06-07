@@ -19,99 +19,93 @@ import java.util.List;
 import javax.swing.*;
 
 public class Controller {
-        int vCount;
-        BAGraph myGraph = new BAGraph();
-        public boolean isInteger (String s){
-            try{
-                Integer.parseInt(s);
-                return true;
-            }   catch (NumberFormatException e){
-                return false;
-            }
-        }
-        @FXML
-        private Button enterButton;
+	int vCount;
+	BAGraph myGraph = new BAGraph();
 
-        @FXML
-        private TextField verticesID;
+	public boolean isInteger(String s) {
+		try {
+			Integer.parseInt(s);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
 
-        @FXML
-        private Button GoBack;
+	@FXML
+	private Button enterButton;
 
-        @FXML
-        private Button nextButton;
+	@FXML
+	private TextField verticesID;
 
-        @FXML
-        private Button execButton;
+	@FXML
+	private Button GoBack;
 
+	@FXML
+	private Button nextButton;
 
-        @FXML
-        void getData(ActionEvent event) {
-            String verticestxt = verticesID.getText();
-            if (verticestxt.isEmpty()) verticestxt = "0";
-            if (isInteger(verticestxt)) {
-                vCount = Integer.parseInt(verticestxt);
-                if (vCount >= 2) {
-                    JOptionPane.showMessageDialog(null, "Number of vertices is: " + vCount);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Invalid input! Input must be an Integer larger than 2");
-                    //return false
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid input! Input must be an Integer larger than 2");
-                //return false
-            }
-        }
-
-        //return to main scene
-        @FXML
-        void Return(ActionEvent event) {
-            try {
-                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample/sample.fxml"));
-                Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.centerOnScreen();
-                stage.show();
-                scene.getStylesheets().add("sample/style.css");
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+	@FXML
+	private Button execButton;
 
 
-        //Create random nodes
-        @FXML
-        private AnchorPane drawPane;
+	@FXML
+	void getData(ActionEvent event) {
+		String verticestxt = verticesID.getText();
+		if (verticestxt.isEmpty()) verticestxt = "0";
+		if (isInteger(verticestxt)) {
+			vCount = Integer.parseInt(verticestxt);
+			if (vCount >= 2) {
+				JOptionPane.showMessageDialog(null, "Number of vertices is: " + vCount);
+			} else {
+				JOptionPane.showMessageDialog(null, "Invalid input! Input must be an Integer larger than 2");
+				//return false
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Invalid input! Input must be an Integer larger than 2");
+			//return false
+		}
+	}
 
-        List<Node> list = new ArrayList<>();
+	//return to main scene
+	@FXML
+	void Return(ActionEvent event) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample/sample.fxml"));
+			Scene scene = new Scene(root);
+			scene.setFill(Color.TRANSPARENT);
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.centerOnScreen();
+			stage.show();
+			scene.getStylesheets().add("sample/style.css");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        @FXML
-        private Button generateButton;
+	@FXML
+	private AnchorPane pane;
 
-        @FXML
-        void generate(ActionEvent event) {
-            for (int i = 0; i < vCount; i++){
-                int x = (int)(Math.random()*737);
-                int y = (int)(Math.random()*631);
-                Circle circle = new Circle (x,y,2, Color.BLACK);
-                list.add(circle);
-                drawPane.getChildren().add(circle);
-            }
-        }
+	@FXML
+	private Button generateButton;
 
-        //Reset all nodes
-        @FXML
-        private Button resetButton;
+	@FXML
+	void setUp(ActionEvent actionEvent) {
+		myGraph.initGraph(vCount, pane);
+	}
 
-        @FXML
-        void reset (ActionEvent event){
-            for (int i = 0; i < list.size(); i++){
-                drawPane.getChildren().remove(list.get(i));
-            }
-            vCount = 0;
-            JOptionPane.showMessageDialog(null, "Successfully removed!");
-        }
+	@FXML
+	void generate(ActionEvent event) {
+		myGraph.execAlgorithm(pane, 0);
+	}
+
+	//Reset all nodes
+	@FXML
+	private Button resetButton;
+
+	@FXML
+	void reset(ActionEvent event) {
+		myGraph.resetStrategy(pane);
+		JOptionPane.showMessageDialog(null, "Successfully removed!");
+	}
+
 }

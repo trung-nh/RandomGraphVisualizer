@@ -1,4 +1,4 @@
-package sample.Algorithm.ER;
+package sample.Algorithm.RN;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -8,8 +8,9 @@ import sample.Algorithm.Element.Edge;
 import sample.Algorithm.Element.Graph;
 import sample.Algorithm.Element.Vertex;
 import sample.Algorithm.RandomGraphStrategy;
+import java.util.Collections;
 
-public class ERGraph extends RandomGraphStrategy {
+public class RNGraph extends RandomGraphStrategy {
 
 	@Override
 	public void initGraph(int vCount, AnchorPane pane) {
@@ -27,27 +28,28 @@ public class ERGraph extends RandomGraphStrategy {
 	}
 
 	@Override
-	public void execAlgorithm(AnchorPane pane, double prob) {
-
-		// generate edges
+	public void execAlgorithm(AnchorPane pane, double edge) {
 		int V = getGraph().getVCount();
+		int edgeCount = (int) edge;
+		for (int i = 0; i < V - 1; i++) {
+			for (int j = i + 1; j < V; j++) {
+				Edge newEdge = new Edge();
+				newEdge.draw(getGraph().getVList().get(i), getGraph().getVList().get(j));
+				getGraph().addEdge(newEdge);
+			}
+		}
+		// Randomly distribute the number of edges all over the graph
+		Collections.shuffle(getGraph().getEList());
+
+		// Display
 		final int[] i = {0};
 		final Timeline timeline = new Timeline();
-		timeline.setCycleCount(V - 1);
+		timeline.setCycleCount(edgeCount);
 		timeline.setDelay(Duration.millis(350));
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(300), actionEvent -> {
-			for (int j = i[0] + 1; j < getGraph().getVCount(); j++) {
-				double probRandom = Math.random();
-				if (probRandom <= prob) {
-					Edge newEdge = new Edge();
-					newEdge.draw(getGraph().getVList().get(i[0]), getGraph().getVList().get(j));
-					pane.getChildren().add(newEdge.getEdge());
-					getGraph().addEdge(newEdge);
-				}
-			}
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(350), actionEvent -> {
+			pane.getChildren().add(getGraph().getEList().get(i[0]).getEdge());
 			i[0]++;
 		}));
 		timeline.play();
 	}
-
 }

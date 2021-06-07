@@ -45,10 +45,6 @@ public class Controller {
 	@FXML
 	private Button GoBack;
 	@FXML
-	private Button nextButton;
-	@FXML
-	private Button execButton;
-	@FXML
 	private Button enterButton;
 	@FXML
 	private TextField kID;

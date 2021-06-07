@@ -10,14 +10,14 @@
       <Button fx:id="GoBack" layoutX="960.0" layoutY="694.0" mnemonicParsing="false" onAction="#Return" prefHeight="51.0" prefWidth="148.0" text="Go Back" />
       <AnchorPane layoutX="197.0" layoutY="28.0" prefHeight="46.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
          <children>
-            <Label layoutX="8.0" layoutY="4.0" prefHeight="42.0" prefWidth="376.0" text="Random Network Model" textFill="WHITE">
+            <Label layoutX="8.0" layoutY="4.0" prefHeight="42.0" prefWidth="376.0" text="Random Network Model" textFill="WHITE" alignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0" style="-fx-background-color: #3d4956;" />
+      <AnchorPane fx:id="pane" layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0" style="-fx-background-color: #3d4956;" />
       <TextField fx:id="nodeID" layoutX="27.0" layoutY="165.0" prefHeight="31.0" prefWidth="139.0" promptText="Input Number" />
       <TextField fx:id="edgeID" layoutX="27.0" layoutY="263.0" prefHeight="31.0" prefWidth="139.0" promptText="Input Number" />
       <Label layoutX="34.0" layoutY="140.0" text="Number of Nodes">
