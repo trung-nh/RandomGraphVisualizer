@@ -47,9 +47,9 @@ public class BAGraph extends RandomGraphStrategy {
 
 		final int[] i = {0};
 		final Timeline timeline = new Timeline();
+		setInterval(V);
 		timeline.setCycleCount(V - 2);
-		timeline.setDelay(Duration.millis(350));
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(600), actionEvent -> {
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			x[0] = (float) (Math.random() * SEED_X + 1);
 			y[0] = (float) (Math.random() * SEED_Y + 1);
 			Vertex newNode = new Vertex(x[0], y[0]);
@@ -106,5 +106,17 @@ public class BAGraph extends RandomGraphStrategy {
 			}
 		}));
 		timeline.play();
+	}
+	@Override
+	protected void setInterval(int V) {
+		if (V >= 40) {
+			this.interval = 350;
+		} else if (V >= 20) {
+			this.interval = 500;
+		} else if (V >= 8) {
+			this.interval = 700;
+		} else {
+			this.interval = 1000;
+		}
 	}
 }

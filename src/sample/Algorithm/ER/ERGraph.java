@@ -31,11 +31,12 @@ public class ERGraph extends RandomGraphStrategy {
 
 		// generate edges
 		int V = getGraph().getVCount();
+		setInterval(V);
 		final int[] i = {0};
 		final Timeline timeline = new Timeline();
 		timeline.setCycleCount(V - 1);
-		timeline.setDelay(Duration.millis(350));
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(300), actionEvent -> {
+		timeline.setDelay(Duration.millis(500));
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			for (int j = i[0] + 1; j < getGraph().getVCount(); j++) {
 				double probRandom = Math.random();
 				if (probRandom <= prob) {
@@ -49,5 +50,16 @@ public class ERGraph extends RandomGraphStrategy {
 		}));
 		timeline.play();
 	}
-
+	@Override
+	protected void setInterval(int V) {
+		if (V >= 40) {
+			this.interval = 300;
+		} else if (V >= 20) {
+			this.interval = 450;
+		} else if (V >= 8) {
+			this.interval = 600;
+		} else {
+			this.interval = 900;
+		}
+	}
 }

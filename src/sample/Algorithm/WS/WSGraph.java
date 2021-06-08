@@ -3,7 +3,8 @@ package sample.Algorithm.WS;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import sample.Algorithm.Element.Edge;
 import sample.Algorithm.Element.Graph;
@@ -19,15 +20,15 @@ public class WSGraph extends RandomGraphStrategy {
 
 	@Override
 	public void initGraph(int vCount, AnchorPane pane) throws InterruptedException {
-		final int[] id = {0};
 		setGraph(new Graph(vCount));
 		int V = getGraph().getInitVCount();
-
+		// Set time for each interval
+		setInterval(V);
 		// form vertices
 		final Timeline timelineV = new Timeline();
 		final int[] iV = {0};
 		timelineV.setCycleCount(V);
-		timelineV.getKeyFrames().add(new KeyFrame(Duration.millis(250), actionEvent -> {
+		timelineV.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			double angle = 2 * iV[0] * Math.PI / V;
 			double xOffset = RADIUS * Math.cos(angle);
 			double yOffset = RADIUS * Math.sin(angle);
@@ -45,8 +46,8 @@ public class WSGraph extends RandomGraphStrategy {
 		final int[] i = {0};
 		final int[] j = {1};
 		timeline.setCycleCount(V * K / 2);
-		timeline.setDelay(Duration.millis((V + 1) * 250));
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(300), actionEvent -> {
+		timeline.setDelay(Duration.millis((V + 1) * interval));
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			int neighbor = (i[0] + j[0]) % V;
 			Edge newEdge = new Edge();
 			newEdge.draw(getGraph().getVList().get(i[0]), getGraph().getVList().get(neighbor));
@@ -64,10 +65,12 @@ public class WSGraph extends RandomGraphStrategy {
 	@Override
 	public void execAlgorithm(AnchorPane pane, double prob) {
 		int V = getGraph().getVCount();
+		// Define rewired edge's color
+		final Paint col = Color.rgb(224, 57, 230);
 		final Timeline timeline = new Timeline();
 		final int[] i = {0};
 		timeline.setCycleCount(V);
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(500), actionEvent -> {
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			double probRandom = Math.random();
 			int id = (i[0] * K) / 2;
 			// if rewiring probability is reached
@@ -82,16 +85,30 @@ public class WSGraph extends RandomGraphStrategy {
 				int R = rand.nextInt(seed);
 				int rewiredV = (((i[0] + (K / 2)) % V) + 1 + R) % V;
 
-//				 finally, rewire
+				// finally, rewire
 				Edge newEdge = new Edge();
+				newEdge.setColor(col);
 				newEdge.draw(getGraph().getVList().get(i[0]), getGraph().getVList().get(rewiredV));
 				pane.getChildren().add(newEdge.getEdge());
+				getGraph().addEdge(newEdge);
 			}
 			i[0]++;
 		}));
 		timeline.play();
 	}
 
+	@Override
+	protected void setInterval(int V) {
+		if (V >= 40) {
+			this.interval = 50;
+		} else if (V >= 20) {
+			this.interval = 100;
+		} else if (V >= 8) {
+			this.interval = 250;
+		} else {
+			this.interval = 400;
+		}
+	}
 
 	public void setK(int k) {
 		K = k;

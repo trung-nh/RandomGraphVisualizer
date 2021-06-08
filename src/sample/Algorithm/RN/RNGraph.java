@@ -44,12 +44,24 @@ public class RNGraph extends RandomGraphStrategy {
 		// Display
 		final int[] i = {0};
 		final Timeline timeline = new Timeline();
+		setInterval(V);
 		timeline.setCycleCount(edgeCount);
-		timeline.setDelay(Duration.millis(350));
-		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(350), actionEvent -> {
+		timeline.getKeyFrames().add(new KeyFrame(Duration.millis(interval), actionEvent -> {
 			pane.getChildren().add(getGraph().getEList().get(i[0]).getEdge());
 			i[0]++;
 		}));
 		timeline.play();
+	}
+	@Override
+	protected void setInterval(int V) {
+		if (V >= 40) {
+			this.interval = 200;
+		} else if (V >= 20) {
+			this.interval = 300;
+		} else if (V >= 8) {
+			this.interval = 400;
+		} else {
+			this.interval = 500;
+		}
 	}
 }

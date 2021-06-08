@@ -29,4 +29,8 @@ public class Edge {
 	public Vertex getTo() {
 		return to;
 	}
+
+	public void setColor(Paint color) {
+		this.color = color;
+	}
 }
