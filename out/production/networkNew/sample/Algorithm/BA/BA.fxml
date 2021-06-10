@@ -1,31 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="761.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Algorithm.BA.Controller">
-   <children>
-      <AnchorPane fx:id="pane" layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0" style="-fx-background-color: #3d4956;" />
-      <Button fx:id="GoBack" layoutX="960.0" layoutY="694.0" mnemonicParsing="false" onAction="#Return" prefHeight="51.0" prefWidth="148.0" text="Go Back" />
-      <AnchorPane layoutX="198.0" layoutY="27.0" prefHeight="46.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
-         <children>
-            <Label layoutX="8.0" layoutY="4.0" prefHeight="42.0" prefWidth="722.0" text="Barabasi - Albert Model / Preferential Attachment" textFill="WHITE" alignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <TextField fx:id="verticesID" layoutX="24.0" layoutY="190.0" prefHeight="31.0" prefWidth="135.0" promptText="Input number" />
-      <Label layoutX="25.0" layoutY="165.0" text="Number of vertices">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Button fx:id="enterButton" layoutX="14.0" layoutY="473.0" mnemonicParsing="false" onAction="#getData" prefHeight="51.0" prefWidth="148.0" text="Enter" />
-      <Button fx:id="setUpButton" layoutX="14.0" layoutY="539.0" mnemonicParsing="false" onAction="#setUp" prefHeight="51.0" prefWidth="148.0" text="Set Up" />
-      <Button fx:id="generateButton" layoutX="14.0" layoutY="605.0" mnemonicParsing="false" onAction="#generate" prefHeight="51.0" prefWidth="148.0" text="Generate" />
-      <Button fx:id="resetButton" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#reset" prefHeight="51.0" prefWidth="148.0" text="Reset"/>
-      <Label layoutX="5.0" layoutY="221.0" text="Conditions: An integer &gt; 2" />
-   </children>
+<AnchorPane prefHeight="761.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Algorithm.BA.Controller">
+    <children>
+        <AnchorPane fx:id="pane" layoutX="197.0" layoutY="88.0" prefHeight="631.0" prefWidth="737.0"
+                    style="-fx-background-color: #3d4956;"/>
+        <Button fx:id="GoBack" layoutX="960.0" layoutY="694.0" mnemonicParsing="false" onAction="#Return"
+                prefHeight="51.0" prefWidth="148.0" text="Go Back"/>
+        <AnchorPane layoutX="198.0" layoutY="27.0" prefHeight="46.0" prefWidth="737.0"
+                    style="-fx-background-color: #3d4956;">
+            <children>
+                <Label alignment="CENTER" layoutX="8.0" layoutY="4.0" prefHeight="42.0" prefWidth="722.0"
+                       text="Barabasi - Albert Model / Preferential Attachment" textFill="WHITE">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <TextField fx:id="verticesID" layoutX="24.0" layoutY="190.0" prefHeight="31.0" prefWidth="135.0"
+                   promptText="Input number"/>
+        <Label layoutX="25.0" layoutY="165.0" text="Number of vertices">
+            <font>
+                <Font size="16.0"/>
+            </font>
+        </Label>
+        <Button fx:id="enterButton" layoutX="14.0" layoutY="473.0" mnemonicParsing="false" onAction="#getData"
+                prefHeight="51.0" prefWidth="148.0" text="Enter"/>
+        <Button fx:id="setUpButton" layoutX="14.0" layoutY="539.0" mnemonicParsing="false" onAction="#setUp"
+                prefHeight="51.0" prefWidth="148.0" text="Set Up"/>
+        <Button fx:id="generateButton" layoutX="14.0" layoutY="605.0" mnemonicParsing="false" onAction="#generate"
+                prefHeight="51.0" prefWidth="148.0" text="Generate"/>
+        <Button fx:id="resetButton" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#reset"
+                prefHeight="51.0" prefWidth="148.0" text="Reset"/>
+        <Label layoutX="5.0" layoutY="221.0" text="Conditions: An integer &gt; 2"/>
+        <VBox layoutX="988.0" layoutY="110.0" prefHeight="200.0" prefWidth="130.0"
+              style="-fx-background-color: #3d4956;" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="20.0">
+            <children>
+                <Label text="Max Degree" textFill="WHITE">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0" top="15.0"/>
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="log_max_deg" maxWidth="100.0" minWidth="80.0" prefHeight="50.0" disable="true">
+                    <VBox.margin>
+                        <Insets left="15.0" top="5.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label layoutX="10.0" layoutY="25.0" text="Average Degree" textFill="WHITE">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="5.0" top="15.0"/>
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="log_avg_deg" layoutX="15.0" layoutY="50.0" maxWidth="100.0" minWidth="80.0"
+                           prefHeight="50.0" disable="true">
+                    <VBox.margin>
+                        <Insets left="15.0" top="5.0"/>
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+        <Button fx:id="logRes" layoutX="968.0" layoutY="397.0" mnemonicParsing="false" onAction="#logRes"
+                prefHeight="51.0" prefWidth="148.0" text="Log Results" AnchorPane.bottomAnchor="323.0"
+                AnchorPane.leftAnchor="958.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="387.0"/>
+    </children>
 </AnchorPane>

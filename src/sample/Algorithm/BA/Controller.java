@@ -19,6 +19,8 @@ import java.util.List;
 import javax.swing.*;
 
 public class Controller {
+	public TextField log_max_deg;
+	public TextField log_avg_deg;
 	int vCount;
 	BAGraph myGraph = new BAGraph();
 
@@ -106,6 +108,12 @@ public class Controller {
 	void reset(ActionEvent event) {
 		myGraph.resetStrategy(pane);
 		JOptionPane.showMessageDialog(null, "Successfully removed!");
+		log_avg_deg.setText(null);
+		log_max_deg.setText(null);
 	}
 
+	@FXML
+	void logRes(ActionEvent actionEvent) {
+		myGraph.logRes(log_max_deg, log_avg_deg);
+	}
 }

@@ -2,6 +2,8 @@ package sample.Algorithm.BA;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import sample.Algorithm.Element.Edge;
@@ -9,7 +11,10 @@ import sample.Algorithm.Element.Graph;
 import sample.Algorithm.Element.Vertex;
 import sample.Algorithm.RandomGraphStrategy;
 
+import java.awt.*;
+
 public class BAGraph extends RandomGraphStrategy {
+	private int maxDegree = 0;
 
 	@Override
 	public void initGraph(int vCount, AnchorPane pane) {
@@ -107,6 +112,7 @@ public class BAGraph extends RandomGraphStrategy {
 		}));
 		timeline.play();
 	}
+
 	@Override
 	protected void setInterval(int V) {
 		if (V >= 40) {
@@ -118,5 +124,15 @@ public class BAGraph extends RandomGraphStrategy {
 		} else {
 			this.interval = 1000;
 		}
+	}
+	@FXML
+	public void logRes(TextField maxDeg, TextField avgDeg) {
+		int V = getGraph().getVCount();
+		for (int i = 0; i < getGraph().getVCount(); i++) {
+			int d = getGraph().getVList().get(i).getDegree();
+			maxDegree = (maxDegree > d) ? maxDegree : d;
+		}
+		maxDeg.setText(String.valueOf(maxDegree));
+		avgDeg.setText(String.valueOf((float) getGraph().getTotalDegree() / (float) V));
 	}
 }

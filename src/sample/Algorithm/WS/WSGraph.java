@@ -2,6 +2,7 @@ package sample.Algorithm.WS;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -10,6 +11,7 @@ import sample.Algorithm.Element.Edge;
 import sample.Algorithm.Element.Graph;
 import sample.Algorithm.Element.Vertex;
 import sample.Algorithm.RandomGraphStrategy;
+
 import java.util.Random;
 
 public class WSGraph extends RandomGraphStrategy {
@@ -17,10 +19,12 @@ public class WSGraph extends RandomGraphStrategy {
 	final double CENTER_X = 358;
 	final double CENTER_Y = 316;
 	private int K;
+	private int rewiredECount = 0;
 
 	@Override
 	public void initGraph(int vCount, AnchorPane pane) throws InterruptedException {
 		setGraph(new Graph(vCount));
+		rewiredECount = 0;
 		int V = getGraph().getInitVCount();
 		// Set time for each interval
 		setInterval(V);
@@ -91,6 +95,9 @@ public class WSGraph extends RandomGraphStrategy {
 				newEdge.draw(getGraph().getVList().get(i[0]), getGraph().getVList().get(rewiredV));
 				pane.getChildren().add(newEdge.getEdge());
 				getGraph().addEdge(newEdge);
+
+				// update rewired edges count
+				rewiredECount++;
 			}
 			i[0]++;
 		}));
@@ -112,5 +119,12 @@ public class WSGraph extends RandomGraphStrategy {
 
 	public void setK(int k) {
 		K = k;
+	}
+
+	public void logResult(TextField rEdges, TextField prob) {
+		rEdges.setText(String.valueOf(rewiredECount));
+		System.out.println(getGraph().getVCount());
+		System.out.println(rewiredECount / getGraph().getVCount());
+		prob.setText(String.valueOf((float) rewiredECount / (float) getGraph().getVCount()));
 	}
 }

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
+	public TextField log_r_edges;
+	public TextField log_prob;
 	int k, vCount;
 	float prob;
 	WSGraph myGraph = new WSGraph();
@@ -134,6 +137,8 @@ public class Controller {
 	void reset(ActionEvent event) {
 		myGraph.resetStrategy(pane);
 		JOptionPane.showMessageDialog(null, "Successfully removed!");
+		log_prob.setText(null);
+		log_r_edges.setText(null);
 	}
 
 	//return to main scene
@@ -153,4 +158,8 @@ public class Controller {
 		}
 	}
 
+	@FXML
+	public void logRes(ActionEvent actionEvent) {
+		myGraph.logResult(log_r_edges, log_prob);
+	}
 }

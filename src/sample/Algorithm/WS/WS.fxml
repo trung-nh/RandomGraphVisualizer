@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,7 +16,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="197.0" layoutY="21.0" prefHeight="51.0" prefWidth="737.0" style="-fx-background-color: #3d4956;">
          <children>
-            <Label layoutX="8.0" layoutY="5.0" prefHeight="42.0" prefWidth="721.0" text="Watts - Strogatz Model / Small-World Model" textFill="WHITE" alignment="CENTER">
+            <Label alignment="CENTER" layoutX="8.0" layoutY="5.0" prefHeight="42.0" prefWidth="721.0" text="Watts - Strogatz Model / Small-World Model" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -44,5 +45,36 @@
       <Label layoutX="12.0" layoutY="200.0" text="Conditions: an integer &gt; 3" />
       <Label layoutX="9.0" layoutY="297.0" prefHeight="42.0" prefWidth="182.0" text="Conditions: an integer divisible by 2" wrapText="true" />
       <Label layoutX="9.0" layoutY="412.0" prefHeight="42.0" prefWidth="182.0" text="Conditions: a number between 0 and 1" wrapText="true" />
+      <VBox layoutX="978.0" layoutY="100.0" prefHeight="200.0" prefWidth="130.0" style="-fx-background-color: #3d4956;" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Label text="# of rewired edges" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="log_r_edges" maxWidth="100.0" minWidth="80.0" prefHeight="50.0" disable="true">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Label layoutX="10.0" layoutY="25.0" text="Actual probability" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="log_prob" layoutX="15.0" layoutY="50.0" maxWidth="100.0" minWidth="80.0" prefHeight="50.0" disable="true">
+               <VBox.margin>
+                  <Insets left="15.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <Button fx:id="logRes" layoutX="958.0" layoutY="387.0" mnemonicParsing="false" onAction="#logRes" prefHeight="51.0" prefWidth="148.0" text="Log Results" />
    </children>
 </AnchorPane>
